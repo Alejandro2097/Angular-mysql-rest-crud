@@ -1,3 +1,6 @@
+import morgan from 'morgan';
+import cors from 'cors';
+
 import express, { Application } from 'express';
 
 import indexRoutes from './routes/indexRoutes';
@@ -12,10 +15,11 @@ class Server{
     }
     config(): void {
         this.app.set('port',process.env.port  || 3000);
+        this.app.use(morgan());
     }
     routes() : void{
-        this.app.use(indexRoutes);
-        this.app.use(personRoutes);
+        this.app.use('/',indexRoutes);
+        this.app.use('/api/person',personRoutes);
     }
     start() :void{
         this.app.listen(this.app.get('port'), () =>{

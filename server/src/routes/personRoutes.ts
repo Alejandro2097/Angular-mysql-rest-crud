@@ -1,10 +1,11 @@
 
+
 import express, { Router } from 'express';
 
 
 class PersonRoutes {
 
-    router: Router = Router();
+    public router: Router = Router();
 
     constructor() {
         this.config();
